@@ -1,0 +1,22 @@
+{
+  "name": "project-04",
+  "version": "1.0.0",
+  "description": "",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "browser-sync": "^2.9.10",
+    "connect-history-api-fallback": "^1.1.0",
+    "gulp": "^3.9.0",
+    "gulp-sass": "^2.0.4",
+    "gulp-concat": "^2.6.0",
+    "gulp-autoprefixer": "^3.0.2",
+    "gulp-connect": "^2.2.0",
+    "gulp-uglify": "^1.4.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Giridhar",
+  "license": "ISC"
+}
