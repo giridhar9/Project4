@@ -1,0 +1,20 @@
+
+<div class="two">
+<h1>Who are you?</h1>
+<form name="myForm" ng-submit="submitRegistration($event)" ng-class="{'validity': invalid}" novalidate class="myForm">
+<fieldset class="inputs">	
+<input type="text" name="name_user" placeholder="Name" ng-model="colonist.name"  required><br /><br />
+<input type="number" name="age" placeholder="Age" ng-model="colonist.age" required><br /><br />
+<div class="custom-select">
+<select name="occupation" ng-model="colonist.job_id" required ng-class="{placeholder: !colonist.job_id}">
+<option value="">Select Occupation</option>
+<option ng-repeat="occupation in jobs" value="{{occupation.id}}">{{occupation.name}}</option>
+</select><br /><br />
+</div>
+</fieldset>
+<fieldset class="check">
+	<button type="submit" ng-click="submitRegistration($event)"><a ui-sref="encounters">Check in</a></button>
+</fieldset>
+</form>
+</div>
+
