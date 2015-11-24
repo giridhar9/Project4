@@ -1,27 +1,21 @@
-<div class="three">
-<div class="recent">
-<h1>Recent Encounters</h1>
-<h3>See an Alien? Report it!</h3>
+<div class="last" ng-swipe-left="swipeLeft()">
+<div class="lasthead">
+<h1> Recent Encounters </h1>
+<span>See an Alien? Report it!</span>
 </div>
-<div class="para">
-<p>Wednesday, Oct 21 - Lizard<br />
-Smoked it</p>
-<p>Wednesday, Oct 21 - Lizard<br />
-Smoked it</p>
-<p>Wednesday, Oct 21 - Lizard><br />
-Smoked it</p>
-<p>Wednesday, Oct 21 - Lizard<br />
-Smoked it</p>
-<p>Wednesday, Oct 21 - Lizard<br />
-Smoked it</p>
-<p>Wednesday, Oct 21 - Lizard<br />
-Smoked it</p>
-<p>Wednesday, Oct 21 - Lizard<br />
-Smoked it</p>
+<div class="elements">
+  <ul>
+    <li ng-repeat="e in encounters"> <p>{{e.date | date : format:timezone}},</p> 
+    	<p>{{e.atype}}  {{e.action}} </p>
+    </li>
+  </ul>
 </div>
-<div class="wrap">
-<div class="alien">
-<a ui-sref="alienen"><button>Report Encounter</button></a>
-</div>
-</div>
+​
+  <div class="wrap">
+  	<div class="alien">
+    <a ui-sref="alienen">
+<button type="submit" class="button"><a ui-sref="alienen">  Report Encounter</a></button></a>
+
+		</div>
+	</div>
 </div>

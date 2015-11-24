@@ -6,12 +6,12 @@
 <form name="alienForm" ng-submit="submitReport($event)" ng-class="{'alienValidity': invalid}" novalidate>
 	<div class="aliens">
 	<div class="alien-select">
-      <select name="options" ng-model="alien.encounter_id" ng-class="{alientype: !alien.encounter_id}" required>
-	    <option value="">Select alien type</option>
-	      <option ng-repeat="option in aliens" value="{{option.id}}">{{option.type}}</option>
+      <select name="options" ng-model="encounter.atype" ng-class="{alientype: !encounter.atype}" required>
+	    <option value="" class="placeholder">Select alien type</option>
+	      <option ng-repeat="option in aliens" value="{{option.type}}">{{option.type}}</option>
 	  </select><br /><br />
 	</div>
-<textarea name="action" placeholder="Action taken" ng-model="alien.action" rows="10" required></textarea>
+<textarea name="action" placeholder="Action taken" ng-model="encounter.action" rows="10" required></textarea>
 
 </form>
 	

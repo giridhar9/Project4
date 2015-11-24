@@ -323,12 +323,14 @@ to prevent collapsing during animation*/
 
 .inputs input {
   width: 100%;
+  margin: 0 auto;
   height: 35px;
   font-family: 'Raleway';
   font-size: 1rem; }
 
 .inputs select {
   width: 100%;
+  margin: 0 auto;
   height: 45px; }
 
 .myForm {
@@ -356,25 +358,54 @@ fieldset button {
   color: white;
   font-size: 1.3rem;
   height: 60px;
-  border: none; }
+  border: none;
+  margin: 0 auto; }
 
-.recent {
+.lasthead {
   font-family: 'Raleway';
   width: 90%;
   text-align: center;
   font-weight: bold;
   margin: 30px; }
 
-.recent h1 {
+.lasthead h1 {
   font-size: 2.5rem; }
 
-.three p {
+.lasthead p {
   margin: 10px;
   font-family: 'Raleway'; }
 
-.para {
-  margin: 20px 20px;
-  height: 50vh; }
+.last {
+  display: flex;
+  height: 100vh;
+  flex-direction: column; }
+
+.lasthead {
+  text-align: center;
+  height: auto;
+  font-size: 22px;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  font-weight: bold; }
+
+.elements {
+  height: 60%;
+  list-style: none;
+  overflow: scroll; }
+
+.elements ul {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  margin: 20px 20px; }
+
+.elements li {
+  margin-bottom: 1rem;
+  font-size: 18px;
+  font-family: 'Raleway'; }
+
+.elements p {
+  line-height: 1.2; }
 
 .alien {
   width: 100%;
@@ -402,31 +433,30 @@ fieldset button {
 
 .alien-select {
   height: 2.5rem;
-  background: white; }
+  width: 100%;
+  text-align: center;
+  margin: 0 auto; }
   .alien-select select {
     font-size: 1rem;
     line-height: 2rem;
     padding-left: 0.5rem;
     font-family: 'Raleway';
     height: 40px;
-    width: 95%; }
+    width: 90%;
+    margin: 0 auto; }
   .alien-select select.alientype {
     color: #ed4343; }
 
 .aliens textarea {
-  width: 200vh;
+  width: 90%;
   height: 200px;
   font-family: 'Raleway';
   font-size: 1rem;
   margin-top: 20px;
   resize: none; }
 
-.aliens select {
-  width: 200vh;
-  height: 45px; }
-
 .aliens button {
-  width: 200vh;
+  width: 90%;
   padding: 10px;
   background-color: #ed4343;
   color: white;
@@ -456,7 +486,8 @@ fieldset button {
   align-items: center; }
 
 .alien button {
-  width: 200vh;
+  width: 90%;
+  margin: 0 auto;
   padding: 10px;
   background-color: #ed4343;
   color: white;

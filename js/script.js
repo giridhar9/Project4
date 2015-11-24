@@ -1,5 +1,5 @@
 (function(){
-var app = angular.module('marsApp', ['ui.router','ngAnimate','ngCookies']);
+var app = angular.module('marsApp', ['ui.router','ngAnimate','ngTouch','ngCookies']);
 app.run(['$rootScope',function($rootScope){
      
              $rootScope.$on('$stateChangeStart', 
@@ -23,8 +23,12 @@ app.config(['$stateProvider','$urlRouterProvider','$locationProvider',
  	  .state('welcome', {
  	  	url: '/',
  	  	templateUrl: 'index1.html',
- 	  	controller: ['$cookies', function($cookies){
- 	  		$cookies.putObject('mars_user', undefined);
+ 	  	controller: ['$cookies','$scope','$state', function($cookies,$scope,$state){
+ 	  		
+ 	  		 $scope.swipeLeft = function() {
+                   $state.go('occupation');
+                 }
+            $cookies.putObject('mars_user', undefined);
  	  	}],
  	  	controllerAs: 'welcome'
  	  })
@@ -35,7 +39,7 @@ app.config(['$stateProvider','$urlRouterProvider','$locationProvider',
  	  	templateUrl: 'index2.html',
  	  	controller: 'registerController',
  	  	resolve: {
- 		user: ['$cookies', function($cookies){
+ 		user: ['$cookies','$state', function($cookies,$state){
  			if($cookies.getObject('mars_user')) {
  				$state.go('encounters');
  			}
@@ -44,13 +48,18 @@ app.config(['$stateProvider','$urlRouterProvider','$locationProvider',
     })
  	  $stateProvider
  	  .state('encounters', {
- 	  	url: '/encounters',
- 	  	templateUrl: 'index3.html',
- 	  	controller: ['$cookies', function($cookies){
- 	  		$cookies.putObject('aliens_user', undefined);
- 	  	}],
- 	  	controllerAs: 'encounters'
- 	  })
+                  url: '/encounters',
+                     templateUrl: 'index3.html',
+                  controller: ['$scope', '$http','$state', function($scope, $http,$state){
+                  var ENCOUNTERS_API_URL = 'https://red-wdp-api.herokuapp.com/api/mars/encounters';
+                   $http.get(ENCOUNTERS_API_URL).then(function(response){
+                   	$scope.encounters = response.data.encounters;
+                   	$scope.swipeLeft = function() {
+                   $state.go('alienen');
+                 }
+                    });
+                    }]
+                    })
  	  $stateProvider
  	  .state('alienen', {
  	  	url: '/report-alien',
@@ -108,12 +117,11 @@ app.controller('reportController', ['$scope','$state','$http','$cookies', functi
 	var ALIEN_TYPE_API_URL = "https://red-wdp-api.herokuapp.com/api/mars/aliens";
     var ENCOUNTERS_API_URL = "https://red-wdp-api.herokuapp.com/api/mars/encounters";
 
-	
+	$scope.encounter = {date: '2015-10-24', colonist_id: $cookies.getObject('mars_user').id};
 
-	  $scope.alien = {};
     $http.get(ALIEN_TYPE_API_URL)
-    .then(function(data){
-    	$scope.aliens = data.data.aliens;
+    .then(function(response){
+    	$scope.aliens = response.data.aliens;
 
     });
 	$scope.submitReport = function(e){
@@ -125,13 +133,13 @@ app.controller('reportController', ['$scope','$state','$http','$cookies', functi
 				$http({
 	  		method: 'POST',
 	  		url: ENCOUNTERS_API_URL,
-	  		data: {alien: $scope.alien}
-	  	}) .then(function(data){
-	  	$cookies.putObject('aliens_user', data.data.alien);
-	  
+	  		data: {encounter: $scope.encounter}
+	  	}) .then(function(response){
+	  	
+	  	  $state.go('encounters');
 			
 		})
-		alert('Report Filed');
+		
 	  }
 	}
 	
