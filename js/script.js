@@ -13,7 +13,7 @@ app.config(['$stateProvider','$urlRouterProvider','$locationProvider',
  function($stateProvider, $urlProvider, $locationProvider){
 
  	$locationProvider.html5Mode({
- 		enabled: true,
+ 		enabled: false,
  		requireBase: false,
  		rewriteLinks: false
  	});
@@ -21,7 +21,7 @@ app.config(['$stateProvider','$urlRouterProvider','$locationProvider',
 
  	$stateProvider
  	  .state('welcome', {
- 	  	url: '/',
+ 	  	url: '',
  	  	templateUrl: 'index1.html',
  	  	controller: ['$cookies','$scope','$state', function($cookies,$scope,$state){
  	  		
